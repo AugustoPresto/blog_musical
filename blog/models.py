@@ -21,6 +21,7 @@ class Post(models.Model):
     post_type = models.CharField(max_length=20,
                                  default='Notícia',
                                  choices=POST_TYPES)
+    post_img = models.ImageField(upload_to='images/')
     created_at = models.DateField(auto_now_add=True)
 
     def __str__(self):
