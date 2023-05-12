@@ -5,6 +5,11 @@ from ckeditor_uploader.fields import RichTextUploadingField
 
 # Create your models here.
 
+POST_TYPES = [
+    ("Notícia", "Notícia"),
+    ("Resenha", "Resenha")
+]
+
 User = get_user_model()
 
 
@@ -13,6 +18,9 @@ class Post(models.Model):
     summary = RichTextField()
     content = RichTextUploadingField()
     author = models.ForeignKey(User, on_delete=models.PROTECT)
+    post_type = models.CharField(max_length=20,
+                                 default='Notícia',
+                                 choices=POST_TYPES)
     created_at = models.DateField(auto_now_add=True)
 
     def __str__(self):
